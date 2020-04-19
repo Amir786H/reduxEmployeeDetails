@@ -23,7 +23,7 @@ class FoodList extends Component {
     };
 
     componentDidMount = () => {
-        console.log(JSON.stringify(this.props.foods));
+        console.log( "amir----------" + JSON.stringify(this.props.foods));
     }
 
 

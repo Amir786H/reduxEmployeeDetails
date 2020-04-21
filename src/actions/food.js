@@ -7,6 +7,13 @@ export const addFood = (food) => (
     }
 );
 
+// export const addEmp = (empName) => (
+//     {
+//         type: ADD_FOOD,
+//         data: empName
+//     }
+// );
+
 export const deleteFood = (key) => (
     {
         type: DELETE_FOOD,

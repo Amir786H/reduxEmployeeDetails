@@ -7,7 +7,8 @@ import {
     Button,
     FlatList
 } from 'react-native';
-import { ListItem, Icon } from 'react-native-elements';
+// import { ListItem, Icon } from 'react-native-elements';
+import { Icon } from 'native-base';
 import { connect } from 'react-redux';
 import { deleteFood } from './actions/food';
 
@@ -46,32 +47,14 @@ class FoodList extends Component {
         // console.log(this.props.navigation.getParam('deleteFood'));
 
         return (
-            // <View style={styles.MainContainer}>
-                // <FlatList style={styles.listContainer}
-                //     data={this.props.foods}
-                //     keyExtractor={(item, index) => item.key.toString()}
-                //     renderItem={
-                //         (data) =>
-                //             <ListItem style={styles.listText}
-                //                 title={data.name}
-                //                 bottomDivider
-                //                 iconRight={<Icon
-                //                     name='delete'
-                //                     size={36}
-                //                     onPress={() => this.props.delete(data.item.key)}
-                //                 />}
-                //             />
-                //     }
-                // />
-            // </View>
-
-
 
             this.props.foods.map((data) =>
                 <View style={styles.MainContainer}>
-                    <View style={{ height: 45, width: '100%', backgroundColor: 'lightblue', justifyContent: 'center', flexDirection: 'row' }}>
-                        <Text style={{ textAlign: 'center' }} onPress={() => this.props.delete(data.key)}>{data.name}</Text>
-                        {/* <Icon name="trash" style={{color: 'black'}}/> */}
+                    <View style={{ height: 50, width: '100%', backgroundColor: 'lightblue',alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row' }}>
+                        <Text style={{ textAlign: 'center',justifyContent: 'center' }} onPress={() => this.props.delete(data.key)}>{data.name}</Text>
+                        <Text style={{ textAlign: 'center',justifyContent: 'center' }}>{data.empName}</Text>
+                        <Text style={{ textAlign: 'center',justifyContent: 'center' }}>{data.empEmail}</Text>
+                        <Icon name="ios-trash" style={{ color: '#76FF03',justifyContent: 'center' }}/>
                     </View>
                 </View>
             )
@@ -94,6 +77,7 @@ const styles = StyleSheet.create({
     MainContainer: {
         // Setting up View inside content in Vertically center.
         padding: 10,
+        flex: 1
         // margin: 10
     },
     item: {

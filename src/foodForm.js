@@ -23,34 +23,12 @@ class FoodForm extends Component {
 
     state = {
         food: null,
+        empName: null,
+        empEmail: null,
+        empPhone: null,
+        empAddress: null
         // foodList: []
     }
-
-    // submitFood = (food) => {
-    //     this.setState(
-    //         {
-    //             foodList:
-    //                 [...this.state.foodList, {
-    //                     key: Math.random(),
-    //                     name: food
-    //                 }]
-    //         }
-    //     )
-    // }
-
-
-    // deleteFood = (key) => {
-    //     this.setState(
-    //         {
-    //             foodList:
-    //                 [
-    //                     ...this.state.foodList.filter((item) =>
-    //                         item.key !== key)
-    //                 ]
-    //         }
-    //     )
-    // }
-
 
 
     render() {
@@ -59,23 +37,43 @@ class FoodForm extends Component {
 
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>Redux</Text>
+                <Text style={styles.title}>Employee Details</Text>
+
                 <TextInput
-                    value={this.state.foods}
+                    // value={this.state.foods}
                     placeholder='Name'
                     style={styles.foodInput}
                     onChangeText={(food) => this.setState({ food })}
                 />
+                <TextInput
+                    placeholder='Employee'
+                    style={styles.foodInput}
+                    onChangeText={(empName) => this.setState({ empName })}
+                />
+                <TextInput
+                    placeholder='Email'
+                    style={styles.foodInput}
+                    onChangeText={(empEmail) => this.setState({ empEmail })}
+                />
+                <TextInput
+                    placeholder='Phone'
+                    style={styles.foodInput}
+                    onChangeText={(empPhone) => this.setState({ empPhone })}
+                />
+
                 <Button title='Submit'
                     color='black'
-                    onPress={() => this.props.add(this.state.food)}
+                    onPress={() => this.props.add(this.state.food +'  '+ this.state.empEmail +'  '+ this.state.empName +'  '+ this.state.empPhone)}
+                    // onPress={() => this.props.add(this.state)}
                 />
+
                 <Button
                     title='Go to FoodList'
                     onPress={() =>
                         this.props.navigation.navigate('FoodList')
                     }
                 />
+
             </View>
         );
     }
@@ -87,19 +85,20 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 16,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-around'
     },
     title: {
-        fontSize: 64,
-        marginBottom: 48
+        fontSize: 40,
+        marginBottom: 35,
+        justifyContent: 'flex-start'
     },
     foodInput: {
-        fontSize: 32,
+        fontSize: 22,
         marginBottom: 3,
-        borderWidth: 1,
+        borderBottomWidth: 1,
         padding: 8,
         width: '80%',
-        borderRadius: 10
+        // borderRadius: 10
     }
 });
 
@@ -111,11 +110,11 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = (dispatch) => {
-    return{
-        add: (food) => dispatch(addFood(food))
+    return {
+        add: (state) => dispatch(addFood(state))
+        // add: (empName) => dispatch(addFood(empName))
     }
 }
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(FoodForm);

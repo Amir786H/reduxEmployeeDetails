@@ -8,7 +8,7 @@ const initialState = {
 
 const foodReducer = (state = initialState, action) => {
 
-    alert('Action-------' + JSON.stringify(action));
+    console.log('Action-------' + JSON.stringify(action));
 
     switch (action.type) {
         case ADD_FOOD:
@@ -16,7 +16,11 @@ const foodReducer = (state = initialState, action) => {
                 ...state,
                 foodList: state.foodList.concat({
                     key: Math.random(),
-                    name: action.data
+                    name: action.data.food,
+                    empName: action.data.empName,
+                    empEmail: action.data.empEmail,
+                    empPhone: action.data.empPhone,
+                    empLocation: action.data.currentLatitude + '  ' + action.data.currentLongitude
                 })
             };
 

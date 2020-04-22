@@ -24,7 +24,7 @@ class FoodList extends Component {
     };
 
     componentDidMount = () => {
-        console.log( "amir----------" + JSON.stringify(this.props.foods));
+        console.log("amir----------" + JSON.stringify(this.props.foods));
     }
 
 
@@ -50,11 +50,13 @@ class FoodList extends Component {
 
             this.props.foods.map((data) =>
                 <View style={styles.MainContainer}>
-                    <View style={{ height: 50, width: '100%', backgroundColor: 'lightblue',alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row' }}>
-                        <Text style={{ textAlign: 'center',justifyContent: 'center' }} onPress={() => this.props.delete(data.key)}>{data.name}</Text>
-                        <Text style={{ textAlign: 'center',justifyContent: 'center' }}>{data.empName}</Text>
-                        <Text style={{ textAlign: 'center',justifyContent: 'center' }}>{data.empEmail}</Text>
-                        <Icon name="ios-trash" style={{ color: '#76FF03',justifyContent: 'center' }}/>
+                    <View style={{ height: 100, width: '100%', backgroundColor: 'lightblue', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'column' }}>
+                        <Text style={{ textAlign: 'center', justifyContent: 'flex-start' }} onPress={() => this.props.delete(data.key)}>{data.name}</Text>
+                        <Text style={{ textAlign: 'center', justifyContent: 'flex-start' }}>{data.empName}</Text>
+                        <Text style={{ textAlign: 'center', justifyContent: 'flex-start' }}>{data.empEmail}</Text>
+                        <Text style={{ textAlign: 'center', justifyContent: 'flex-start' }}>{data.empPhone}</Text>
+                        <Text style={{ textAlign: 'center', justifyContent: 'flex-start' }}>{data.empLocation}</Text>
+                        <Icon name="ios-trash" style={{ color: '#76FF03'}} />
                     </View>
                 </View>
             )
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = (state) => {
-    alert(state);
+    // alert(state);
     return {
         foods: state.foodReducer.foodList
     }
